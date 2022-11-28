@@ -1,5 +1,5 @@
-password = "WindyLe78201330@"
-username = "phonghle@cisco.com"
+password = "<password>"
+username = "<username>"
 DNAC_Shockwave_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Shockwave+Solution+Sanity+Reports"
 DNAC_Guardian_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Guardian+Solution+Sanity+Reports"
 

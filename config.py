@@ -2,6 +2,8 @@ password = "<password>"
 username = "<username>"
 DNAC_Shockwave_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Shockwave+Solution+Sanity+Reports"
 DNAC_Guardian_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Guardian+Solution+Sanity+Reports"
+try_again_loading = 2
+
 
 #login
 login_button_id = 'login-button'
@@ -14,6 +16,9 @@ tbody_xpath = '//*[@id="main-content"]/div[2]/table/tbody'
 metajson_xpath = "//a[text() = 'meta.json']"
 button_download_metajson_xpath = "//button[@type='submit' and @class='btn btn-primary']"
 information_metajson_xpath = "//span[@class='log-not-matched']//ancestor::div[1]"
+
+#Database
+database = 'mongodb+srv://triton01:root@cluster00.5hulm.mongodb.net/?retryWrites=true&w=majority'
 
 
 

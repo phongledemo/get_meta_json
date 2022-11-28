@@ -10,20 +10,14 @@ from config import username, userInput_id, passwordInput_id, password, DNAC_Shoc
     trust_browser_button_id, tbody_xpath, information_metajson_xpath, DNAC_Guardian_Solution, log
 import logging
 from logging import config
-import argparse
 import time
 import json
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument('--mode','-m', type = str, required = True)
-args, unknown = parser.parse_known_args()
-mode = args.mode
 
 
 log_config = log
 config.dictConfig(log_config)
 logger = logging.getLogger("root")
+
 
 def check_exists_byOptions(drivers, option: str, infor: str) -> bool:
     try:
@@ -123,14 +117,15 @@ def download_metajson(link_href: list, mode: str):
         except:
             pass
 
-        
-def run(driver, mode:str):
+
+def run(driver, mode: str):
     link_herf = DNAC(driver, mode)
     download_metajson(link_herf, mode)
 
 
-
 if __name__ == "__main__":
     driver = webdriver.Edge(service=EdgeService(
-    EdgeChromiumDriverManager().install()))
-    run(driver, mode)
+        EdgeChromiumDriverManager().install()))
+    modes = ["shockwave", "guardian"]
+    for mode in modes:
+        run(driver, mode)

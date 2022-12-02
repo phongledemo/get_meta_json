@@ -1,7 +1,9 @@
-password = "<password>"
-username = "<username>"
+password = ""
+username = ""
 DNAC_Shockwave_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Shockwave+Solution+Sanity+Reports"
 DNAC_Guardian_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Guardian+Solution+Sanity+Reports"
+DNAC_Ghost_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Ghost+Solution+Sanity+Reports"
+DNAC_Groot_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Groot+Solution+Sanity+Reports"
 try_again_loading = 2
 
 
@@ -12,7 +14,9 @@ userInput_id = 'userInput'
 passwordInput_id = 'passwordInput'
 
 #Get_link
-tbody_xpath = '//*[@id="main-content"]/div[2]/table/tbody'
+big_table = '//div[@class="table-wrap"]'
+tbody_xpath_2 = '//*[@id="main-content"]/div[2]/table/tbody'
+tbody_xpath_1 = '//div[@class="table-wrap"]/table/tbody'
 metajson_xpath = "//a[text() = 'meta.json']"
 button_download_metajson_xpath = "//button[@type='submit' and @class='btn btn-primary']"
 information_metajson_xpath = "//span[@class='log-not-matched']//ancestor::div[1]"
@@ -60,3 +64,8 @@ log =  {
                 },
             }
         }
+
+
+
+
+Product = {}

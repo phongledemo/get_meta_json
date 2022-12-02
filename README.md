@@ -1,3 +1,3 @@
 # get_meta_json
 
-please create dir meta: groot, ghost, shockwave, guardian.
+please create meta folder: groot, ghost, shockwave, guardian and log folder.

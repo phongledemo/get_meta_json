@@ -4,6 +4,7 @@ DNAC_Shockwave_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Shockwav
 DNAC_Guardian_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Guardian+Solution+Sanity+Reports"
 DNAC_Ghost_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Ghost+Solution+Sanity+Reports"
 DNAC_Groot_Solution = "https://wiki.cisco.com/display/EDPEIXOT/DNAC+Groot+Solution+Sanity+Reports"
+Wiki_Cisco_Page = "https://wiki.cisco.com/"
 try_again_loading = 2
 
 
@@ -14,7 +15,7 @@ userInput_id = 'userInput'
 passwordInput_id = 'passwordInput'
 
 #Get_link
-big_table = '//div[@class="table-wrap"]'
+big_table = '//div[@id="page"]'
 tbody_xpath_2 = '//*[@id="main-content"]/div[2]/table/tbody'
 tbody_xpath_1 = '//div[@class="table-wrap"]/table/tbody'
 metajson_xpath = "//a[text() = 'meta.json']"
@@ -69,3 +70,5 @@ log =  {
 
 
 Product = {}
+
+logger = ''

@@ -12,6 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import datetime
 import logging
 import config
+from config import logger
 import constanst_var as var
 from helper import mapping_dnac, check, mapping_ise, mapping_polaris
 import time
@@ -19,12 +20,13 @@ import bson
 import json
 import os
 import utils
-
+from functools import wraps
 
 
 class data_processing:
 
     def connect_db(self):
+        # logger.info("Entering func: connect_db")
         try:
             self.root = utils.Collect_connection().connect_collect_new_dashboard()
             self.record = utils.Collect_connection().connect_collect_record()
@@ -38,7 +40,10 @@ class data_processing:
                                     ('IoT', pymongo.ASCENDING), ('Controllers', pymongo.ASCENDING)], unique = True)
         except Exception as e:
             return e
+        # logger.info("Leaving func: connect_db")
+    
     def action(self, mode):
+        # logger.info(f"Entering func: connect_db with mode: {mode}")
         root = self.root
         inventory = self.inventory
         record = self.record
@@ -114,13 +119,14 @@ class data_processing:
                         continue
         except Exception as e:
             return e
+        # logger.info("Leaving func: action")
 
     def save_product(self):
+        # logger.info("Leaving func: save_product")
         with open('constanst_var.py', 'w') as f:
             f.write('PRODUCT = ')
             json.dump(config.Product , f, indent=4)
             f.close()
-
-
+        # logger.info("Leaving func: save_product")
 
 

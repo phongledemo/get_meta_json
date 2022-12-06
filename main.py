@@ -28,8 +28,7 @@ log_config = log
 log_config['handlers']['file']['filename'] = 'log/'+f'{((str(datetime.datetime.now()).split(".")[0]).replace(":","-")).replace(" ","_")}.log'
 config.dictConfig(log_config)
 logger = logging.getLogger("root")
-config.logger = logger
-
+global_logger = logger
 
 def graceful_exit():
     sys.exit()
@@ -134,16 +133,13 @@ def DNAC(driver, mode: str, try_again: int):
 
     if mode == "shockwave":
         driver.get(DNAC_Shockwave_Solution)
-        # tbody_xpath = tbody_xpath_2
     elif mode == "guardian":
         driver.get(DNAC_Guardian_Solution)
-        # tbody_xpath = tbody_xpath_2
     elif mode == "groot":
         driver.get(DNAC_Groot_Solution)
         tbody_xpath = tbody_xpath_1
     elif mode == "ghost":
         driver.get(DNAC_Ghost_Solution)
-        # tbody_xpath = tbody_xpath_2
     else:
         logger.error("No found mode")
         return False
@@ -182,16 +178,16 @@ def download_metajson(link_href: list, mode: str, try_again) -> bool|list:
     for index, value in enumerate(link_href):
         driver.get(value)
         try:
-            element = WebDriverWait(driver, 30).until(
+            element = WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located(
                     (By.XPATH, metajson_xpath))
             )
             element.click()
-            element = WebDriverWait(driver, 30).until(
+            element = WebDriverWait(driver, 20).until(
                 EC.visibility_of_all_elements_located(
                     (By.XPATH, information_metajson_xpath))
             )
-            time.sleep(4)
+            time.sleep(1.5)
             text = driver.find_element(
                 By.XPATH, information_metajson_xpath).text
             text = dict(eval(text))
@@ -225,7 +221,7 @@ if __name__ == "__main__":
         graceful_exit()
     modes = ["guardian", "shockwave", "groot", "ghost"]
 
-    shrt = data_processing()
+    shrt = data_processing(logger=logger)
     shrt.connect_db()
 
     for mode in modes:
@@ -234,5 +230,4 @@ if __name__ == "__main__":
         shrt.action(mode)
 
     shrt.save_product()
-
     logger.info("Done")

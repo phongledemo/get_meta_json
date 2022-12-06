@@ -27,6 +27,7 @@ database = 'mongodb+srv://triton01:root@cluster00.5hulm.mongodb.net/?retryWrites
 
 
 
+#Logger
 log =  {
             "version":1,
                 "root":{
@@ -55,7 +56,7 @@ log =  {
                     'file': {
                         'format': '{asctime}: {levelname}: (lineno {lineno}): {message} ',
                         'style': '{',
-                        'datefmt': 'pb_%Y_%m_%d_%H_%M_%S'
+                        'datefmt': 'log_%Y_%m_%d_%H_%M_%S'
                     },
                 'loggers': {
                     'custom': {
@@ -68,7 +69,5 @@ log =  {
 
 
 
-
+#Product
 Product = {}
-
-logger = ''

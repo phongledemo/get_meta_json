@@ -27,6 +27,7 @@ class data_processing:
                                     ('Switch', pymongo.ASCENDING), ('Router', pymongo.ASCENDING), ('Access Point', pymongo.ASCENDING), 
                                     ('IoT', pymongo.ASCENDING), ('Controllers', pymongo.ASCENDING)], unique = True)
         except Exception as e:
+            self.logger.error("Connection to database fail")
             return e
         self.logger.info("Leaving func: connect_db")
     
@@ -106,15 +107,19 @@ class data_processing:
                     except:
                         continue
         except Exception as e:
+            self.logger.error(e)
             return e
         self.logger.info("Leaving func: action")
 
     def save_product(self):
         self.logger.info("Leaving func: save_product")
-        with open('constanst_var.py', 'w') as f:
-            f.write('PRODUCT = ')
-            json.dump(config.Product , f, indent=4)
-            f.close()
+        try:
+            with open('constanst_var.py', 'w') as f:
+                f.write('PRODUCT = ')
+                json.dump(config.Product , f, indent=4)
+                f.close()
+        except Exception as e:
+            self.logger.error(e)
         self.logger.info("Leaving func: save_product")
 
 

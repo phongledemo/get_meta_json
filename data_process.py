@@ -16,7 +16,6 @@ class data_processing:
     def connect_db(self):
         self.logger.info("Entering func: connect_db")
         try:
-            self.root = utils.Collect_connection().connect_collect_new_dashboard()
             self.record = utils.Collect_connection().connect_collect_record()
             self.inventory = utils.Collect_connection().connect_collect_record_inventory()
             self.record.create_index([('dnac_release', pymongo.ASCENDING), ('dnac_version', pymongo.ASCENDING), 
@@ -33,7 +32,6 @@ class data_processing:
     
     def action(self, mode):
         self.logger.info(f"Entering func: connect_db with mode: {mode}")
-        root = self.root
         inventory = self.inventory
         record = self.record
         try:

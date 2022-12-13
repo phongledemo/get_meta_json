@@ -57,25 +57,25 @@ def debug_decorator(func):
     return wrapper
 
 
-@debug_decorator
-def connect_and_savejson(mode: str, try_connect):
-    try:
-        client = MongoClient(database)
-        db: Database = client.get_database("dashboard")
-        conn = db.get_collection("root_new")
-        logger.info(f"Connect to db successfully")
-    except:
-        if try_connect == 0:
-            logger.error("Can not connect to database")
-            return "Can not connect to database"
-        connect_and_savejson(mode, try_connect - 1)
-    path_to_json = f'meta/{mode}/'
-    for file_name in [file for file in os.listdir(path_to_json) if file.endswith('.json')]:
-        with open(path_to_json + file_name, encoding='utf8') as json_file:
-            json_item = json.load(json_file)
-            if conn.find_one({"url": json_item["url"]}):
-                continue
-            conn.insert_one(json_item)
+# @debug_decorator
+# def connect_and_savejson(mode: str, try_connect):
+#     try:
+#         client = MongoClient(database)
+#         db: Database = client.get_database("dashboard")
+#         # conn = db.get_collection("root_new")
+#         logger.info(f"Connect to db successfully")
+#     except:
+#         if try_connect == 0:
+#             logger.error("Can not connect to database")
+#             return "Can not connect to database"
+#         connect_and_savejson(mode, try_connect - 1)
+    # path_to_json = f'meta/{mode}/'
+    # for file_name in [file for file in os.listdir(path_to_json) if file.endswith('.json')]:
+    #     with open(path_to_json + file_name, encoding='utf8') as json_file:
+    #         json_item = json.load(json_file)
+    #         if conn.find_one({"url": json_item["url"]}):
+    #             continue
+    #         conn.insert_one(json_item)
 
 
 @debug_decorator
@@ -228,7 +228,7 @@ if __name__ == "__main__":
 
     for mode in modes:
         run(driver, mode)
-        connect_and_savejson(mode=mode, try_connect=try_again_loading)
+        # connect_and_savejson(mode=mode, try_connect=try_again_loading)
         shrt.action(mode)
 
     shrt.save_product()

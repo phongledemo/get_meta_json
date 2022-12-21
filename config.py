@@ -9,9 +9,10 @@ login_button_id = 'login-button'
 trust_browser_button_id = 'trust-browser-button'
 userInput_id = 'userInput'
 passwordInput_id = 'passwordInput'
+verify_code_xpath = "//div[@class='row display-flex align-flex-justify-content-center verification-code']"
 
 #Get_link
-big_table = '//div[@id="page"]'
+big_table = '//*[@id="page"]'
 three_tbody_xpath = '//*[@id="main-content"]/div[2]/table/tbody'
 tbody_xpath = '//div[@class="table-wrap"]/table/tbody'
 metajson_xpath = "//a[text() = 'meta.json']"
@@ -40,7 +41,7 @@ log =  {
                         "formatter":"file",
                         "class":"logging.FileHandler",
                         'encoding': 'utf8',
-                        'filename': 'log/log_file.log',
+                        # 'filename': 'log/log_file.log',
                     }
                 },
                 "formatters":{
@@ -67,3 +68,6 @@ log =  {
 
 #Product
 Product = {}
+
+#Status
+Process_status = ""
